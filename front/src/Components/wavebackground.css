@@ -1,0 +1,44 @@
+.wave-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #e0f2ff;
+  }
+  
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+   background-color: blue;
+    background-size: cover;
+    background-repeat: repeat-x;
+  }
+  
+  .wave1 {
+    opacity: 0.6;
+    animation: waveFlow 10s linear infinite;
+  }
+  
+  .wave2 {
+    opacity: 0.4;
+    animation: waveFlow 15s linear infinite reverse;
+    top: 10px;
+  }
+  
+  .wave3 {
+    opacity: 0.2;
+    animation: waveFlow 20s linear infinite;
+    top: 20px;
+  }
+  
+  @keyframes waveFlow {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  

@@ -188,7 +188,7 @@ const ManageStories = () => {
               <img
                 src={
                   story.image
-                    ? `https://suka-charitable-trust-full-backend.onrender.com/stories/${story.image}`
+                    ? `https://suka-charitable-trust-full-backend.onrender.com/uploads/stories/${story.image}`
                     : "https://via.placeholder.com/644?text=No+Image"
                 }
                 alt={story.title}

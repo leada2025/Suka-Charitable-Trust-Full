@@ -76,7 +76,7 @@ exports.forgotPassword = async (req, res) => {
     user.resetTokenExpiry = Date.now() + 3600000; // 1 hour expiry
     await user.save();
 
-    const resetUrl = `https://suka-charitable-trust-full-backend.onrender.com/reset-password/${token}`;
+    const resetUrl = `https://suka-charitable-trust-full-admin.onrender.com/reset-password/${token}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',

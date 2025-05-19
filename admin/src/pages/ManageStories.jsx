@@ -76,7 +76,7 @@ const ManageStories = () => {
       description: story.description,
       image: null,
     });
-    setPreview(story.imageUrl || `http://localhost:5000/uploads/stories/${story.image}`);
+    setPreview(story.imageUrl || `https://suka-charitable-trust-full-backend.onrender.com/uploads/stories/${story.image}`);
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -188,7 +188,7 @@ const ManageStories = () => {
               <img
                 src={
                   story.image
-                    ? `http://localhost:5000/uploads/stories/${story.image}`
+                    ? `https://suka-charitable-trust-full-backend.onrender.com/stories/${story.image}`
                     : "https://via.placeholder.com/644?text=No+Image"
                 }
                 alt={story.title}

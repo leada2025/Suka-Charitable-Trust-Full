@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Subscriber = require("../models/Subscriber.js");
-const sendThankYouEmail = require("../utils/Mailer.js");
+const { sendThankYouEmail } = require("../utils/Mailer.js");
+
 
 router.post("/", async (req, res) => {
   const { email } = req.body;

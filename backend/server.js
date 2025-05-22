@@ -22,7 +22,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174','https://suka-charitable-trust-full-frontend.onrender.com','https://suka-charitable-trust-full-admin.onrender.com'],
+    origin: ['http://localhost:5173', 'http://localhost:5174','https://suka-charitable-trust-full-frontend.onrender.com','https://suka-charitable-trust-full-admin.onrender.com,www.sukacare.org'],
     credentials: true,
   })
 );

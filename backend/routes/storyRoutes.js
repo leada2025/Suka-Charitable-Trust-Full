@@ -26,7 +26,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   const newStory = new Story({
     title,
     description,
-    image: req.file ? `/data/stories/${req.file.filename}` : null, // Store path relative to `/uploads`
+    image: req.file ? `/stories/${req.file.filename}` : null, // Store path relative to `/uploads`
   });
   await newStory.save();
   res.status(201).json(newStory);
@@ -58,7 +58,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   const updateData = { title, description };
 
   if (req.file) {
-    updateData.image = `/data/stories/${req.file.filename}`;
+    updateData.image = `/stories/${req.file.filename}`;
   }
 
   try {

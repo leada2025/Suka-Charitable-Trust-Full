@@ -185,19 +185,16 @@ const ManageStories = () => {
               key={story._id}
               className="border rounded-lg p-4 bg-white shadow-sm"
             >
-              <img
-                src={
-                  story.image
-<<<<<<< HEAD
-                    ? `http://localhost:5000/uploads/stories/${story.image}`
-=======
-                    ? `https://suka-charitable-trust-full-backend.onrender.com/uploads/stories/${story.image}`
->>>>>>> 90602fb7645b06bcc3707ad457986f57832cd7b4
-                    : "https://via.placeholder.com/644?text=No+Image"
-                }
-                alt={story.title}
-                className="h-80 w-full object-contain rounded mb-2"
-              />
+          <img
+  src={
+    story.image
+      ? `https://suka-charitable-trust-full-backend.onrender.com/uploads${story.image}`
+      : "https://via.placeholder.com/644?text=No+Image"
+  }
+  alt={story.title}
+  className="h-80 w-full object-contain rounded mb-2"
+/>
+
               <h3 className="text-lg font-semibold">{story.title}</h3>
               <p className="text-sm text-gray-600 mb-2 line-clamp-3">
                 {story.description}

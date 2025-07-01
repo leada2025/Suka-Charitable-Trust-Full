@@ -7,7 +7,8 @@ const Story = require("../models/Story");
 const router = express.Router();
 
 // Ensure persistent upload directory exists
-const uploadPath = "/uploads/data/stories";
+const uploadPath = path.join(__dirname, "../uploads/data/stories");
+
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
 }
@@ -41,7 +42,8 @@ router.get("/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const story = await Story.findById(req.params.id);
   if (story?.image) {
-    const imagePath = path.join("/uploads/data", story.image);
+   const imagePath = path.join(__dirname, "../uploads/data", story.image);
+
     fs.unlink(imagePath, (err) => {
       if (err) console.warn("Failed to delete image:", err.message);
     });

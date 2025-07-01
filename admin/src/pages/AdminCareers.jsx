@@ -97,7 +97,7 @@ const AdminCareers = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-3xl mx-auto p-4">
       <h2 className="text-3xl text-purple-900 font-bold mb-6" ref={formRef}>
         Manage Careers
       </h2>

@@ -36,4 +36,28 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: "Story deleted" });
 });
 
+
+// UPDATE
+router.put("/:id", upload.single("image"), async (req, res) => {
+  const { title, description } = req.body;
+  const updateData = { title, description };
+
+  if (req.file) {
+    updateData.image = req.file.filename;
+  }
+
+  try {
+    const updatedStory = await Story.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    );
+    res.json(updatedStory);
+  } catch (err) {
+    console.error("Error updating story:", err.message);
+    res.status(500).json({ message: "Failed to update story" });
+  }
+});
+
+
 module.exports = router; // ✅ Use CommonJS export

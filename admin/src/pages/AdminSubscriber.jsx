@@ -11,7 +11,7 @@ const AdminSubscriberList = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="max-w-3xl mx-auto  p-4">
       <h2 className="text-xl font-bold mb-4">📧 Email Subscribers</h2>
       <ul className="space-y-2">
         {subscribers.map((sub) => (

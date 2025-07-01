@@ -46,15 +46,15 @@ const InquiryAdmin = () => {
   if (error) return <p className="p-6 text-red-600">{error}</p>;
 
   return (
-    <div className="p-6">
+    <div className="p-2">
       <h2 className="text-2xl font-bold mb-4">📥 Inquiry Submissions</h2>
       {inquiries.length === 0 ? (
         <p>No inquiries found.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border">
+          <table className="w-full bg-white shadow rounded">
             <thead>
-              <tr className="bg-purple-100 text-left">
+              <tr className="bg-gray-100 text-left">
                 <th className="p-2">Name</th>
                 <th className="p-2">Email</th>
                 <th className="p-2">Phone</th>

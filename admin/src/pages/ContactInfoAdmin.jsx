@@ -49,7 +49,7 @@ const ContactInfoAdmin = () => {
   if (!info) return <p>Loading...</p>;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4">
+    <form onSubmit={handleSubmit} className="space-y-4 mx-auto max-w-3xl p-4">
       <input name="address" value={info.address} onChange={handleChange} className="border p-2 w-full" placeholder="Address" />
       <input name="phone" value={info.phone} onChange={handleChange} className="border p-2 w-full" placeholder="Phone" />
       <input name="email" value={info.email} onChange={handleChange} className="border p-2 w-full" placeholder="Email" />

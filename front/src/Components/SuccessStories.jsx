@@ -18,7 +18,7 @@ const SuccessStoriesCarousel = () => {
       // If backend doesn't return imageUrl, construct it here
       const formatted = res.data.map((story) => ({
         ...story,
-        imageUrl: `https://suka-charitable-trust-full-backend.onrender.com/uploads/stories/${story.image}`,
+        imageUrl: `http://localhost:5000/uploads/stories/${story.image}`,
       }));
       setStories(formatted);
     } catch (err) {

@@ -17,7 +17,7 @@ exports.createNews = async (req, res) => {
     const news = new News({
       title,
       description,
-      image: `/news/${image}`, // Store relative path for public access
+      image: `news/${image}`, // Store relative path for public access
     });
 
     await news.save();
@@ -52,7 +52,7 @@ exports.updateNews = async (req, res) => {
         const oldImagePath = path.join('/uploads/data', news.image);
         if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
       }
-      news.image = `/news/${req.file.filename}`; // Save new path
+      news.image = `news/${req.file.filename}`; // Save new path
     }
 
     news.title = title || news.title;
@@ -74,7 +74,8 @@ exports.deleteNews = async (req, res) => {
 
     // Delete image from persistent disk
     if (news.image) {
-      const imagePath = path.join('/uploads/data', news.image);
+      const imagePath = path.join(__dirname, "../uploads/data", news.image.replace(/^\/+/, ""));
+
       if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
     }
 

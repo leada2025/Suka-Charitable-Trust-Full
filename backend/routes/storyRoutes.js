@@ -36,8 +36,11 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: "Story deleted" });
 });
 
+<<<<<<< HEAD
 
 // UPDATE
+=======
+>>>>>>> 90602fb7645b06bcc3707ad457986f57832cd7b4
 router.put("/:id", upload.single("image"), async (req, res) => {
   const { title, description } = req.body;
   const updateData = { title, description };
@@ -59,5 +62,8 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 90602fb7645b06bcc3707ad457986f57832cd7b4
 module.exports = router; // ✅ Use CommonJS export

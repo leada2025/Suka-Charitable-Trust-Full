@@ -2,6 +2,8 @@ const News = require('../models/News');
 const fs = require('fs');
 const path = require('path');
 
+const UPLOAD_BASE_PATH = '/uploads/data/news'; // Persistent disk path
+
 // Create news
 exports.createNews = async (req, res) => {
   try {
@@ -12,7 +14,12 @@ exports.createNews = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const news = new News({ title, description, image });
+    const news = new News({
+      title,
+      description,
+      image: `/news/${image}`, // Store relative path for public access
+    });
+
     await news.save();
     res.status(201).json(news);
   } catch (err) {
@@ -39,13 +46,13 @@ exports.updateNews = async (req, res) => {
     const news = await News.findById(id);
     if (!news) return res.status(404).json({ message: "News not found" });
 
-    // If a new image is uploaded, remove the old one
+    // If a new image is uploaded, delete old one
     if (req.file) {
       if (news.image) {
-        const oldImagePath = path.join(__dirname, '../uploads/news/', news.image);
+        const oldImagePath = path.join('/uploads/data', news.image);
         if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
       }
-      news.image = req.file.filename;
+      news.image = `/news/${req.file.filename}`; // Save new path
     }
 
     news.title = title || news.title;
@@ -65,9 +72,11 @@ exports.deleteNews = async (req, res) => {
     const news = await News.findById(id);
     if (!news) return res.status(404).json({ message: "News not found" });
 
-    // Delete image from filesystem
-    const imagePath = path.join(__dirname, '../uploads/news/', news.image);
-    if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+    // Delete image from persistent disk
+    if (news.image) {
+      const imagePath = path.join('/uploads/data', news.image);
+      if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+    }
 
     await News.findByIdAndDelete(id);
     res.json({ message: "News deleted" });

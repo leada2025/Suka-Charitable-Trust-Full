@@ -1,13 +1,20 @@
-// routes/storyRoutes.js
 const express = require("express");
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 const Story = require("../models/Story");
 
 const router = express.Router();
 
-// Multer setup
+// Ensure persistent upload directory exists
+const uploadPath = "/uploads/data/stories";
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
+
+// Multer setup with persistent disk path
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/stories"),
+  destination: (req, file, cb) => cb(null, uploadPath),
   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
 const upload = multer({ storage });
@@ -18,7 +25,7 @@ router.post("/", upload.single("image"), async (req, res) => {
   const newStory = new Story({
     title,
     description,
-    image: req.file.filename,
+    image: req.file ? `/stories/${req.file.filename}` : null, // Store path relative to `/uploads`
   });
   await newStory.save();
   res.status(201).json(newStory);
@@ -30,12 +37,18 @@ router.get("/", async (req, res) => {
   res.json(stories);
 });
 
-// DELETE
+// DELETE (optional: delete image file too)
 router.delete("/:id", async (req, res) => {
+  const story = await Story.findById(req.params.id);
+  if (story?.image) {
+    const imagePath = path.join("/uploads/data", story.image);
+    fs.unlink(imagePath, (err) => {
+      if (err) console.warn("Failed to delete image:", err.message);
+    });
+  }
   await Story.findByIdAndDelete(req.params.id);
   res.json({ message: "Story deleted" });
 });
-
 
 // UPDATE
 router.put("/:id", upload.single("image"), async (req, res) => {
@@ -43,15 +56,11 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   const updateData = { title, description };
 
   if (req.file) {
-    updateData.image = req.file.filename;
+    updateData.image = `/stories/${req.file.filename}`;
   }
 
   try {
-    const updatedStory = await Story.findByIdAndUpdate(
-      req.params.id,
-      updateData,
-      { new: true }
-    );
+    const updatedStory = await Story.findByIdAndUpdate(req.params.id, updateData, { new: true });
     res.json(updatedStory);
   } catch (err) {
     console.error("Error updating story:", err.message);
@@ -59,5 +68,4 @@ router.put("/:id", upload.single("image"), async (req, res) => {
   }
 });
 
-
-module.exports = router; // ✅ Use CommonJS export
+module.exports = router;

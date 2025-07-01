@@ -69,7 +69,8 @@ export default function NewsAdmin() {
     setForm({ title: item.title, description: item.description, image: null });
     setEditingId(item._id);
     setPreview(null);
-    setExistingImage(`http://localhost:5000/uploads/news/${item.image}`);
+   setExistingImage(`https://suka-charitable-trust-full-backend.onrender.com/uploads/news/${item.image}`);
+
 
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -159,7 +160,7 @@ export default function NewsAdmin() {
           className="border p-4 mb-4 rounded shadow relative bg-white"
         >
           <img
-            src={`http://localhost:5000/uploads/news/${item.image}`}
+           src={`https://suka-charitable-trust-full-backend.onrender.com/uploads/news/${item.image}`}
             alt={item.title}
             className="w-full max-h-[400px] object-cover mb-2 rounded"
           />

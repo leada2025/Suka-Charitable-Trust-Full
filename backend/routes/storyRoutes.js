@@ -38,21 +38,8 @@ router.get("/", async (req, res) => {
   res.json(stories);
 });
 
-// DELETE (optional: delete image file too)
-router.delete("/:id", async (req, res) => {
-  const story = await Story.findById(req.params.id);
-  if (story?.image) {
-   const imagePath = path.join(__dirname, "../uploads/data", story.image);
 
-    fs.unlink(imagePath, (err) => {
-      if (err) console.warn("Failed to delete image:", err.message);
-    });
-  }
-  await Story.findByIdAndDelete(req.params.id);
-  res.json({ message: "Story deleted" });
-});
 
-// UPDATE
 router.put("/:id", upload.single("image"), async (req, res) => {
   const { title, description } = req.body;
   const updateData = { title, description };
@@ -69,5 +56,22 @@ router.put("/:id", upload.single("image"), async (req, res) => {
     res.status(500).json({ message: "Failed to update story" });
   }
 });
+// DELETE (optional: delete image file too)
+router.delete("/:id", async (req, res) => {
+  const story = await Story.findById(req.params.id);
+  if (story?.image) {
+  const imagePath = path.join(__dirname, "../uploads/data", story.image.replace(/^\/+/, ''));
+
+
+    fs.unlink(imagePath, (err) => {
+      if (err) console.warn("Failed to delete image:", err.message);
+    });
+  }
+  await Story.findByIdAndDelete(req.params.id);
+  res.json({ message: "Story deleted" });
+});
+
+// UPDATE
+
 
 module.exports = router;

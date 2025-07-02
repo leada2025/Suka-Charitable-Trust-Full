@@ -49,22 +49,76 @@ const ContactInfoAdmin = () => {
   if (!info) return <p>Loading...</p>;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 mx-auto max-w-3xl p-4">
-      <input name="address" value={info.address} onChange={handleChange} className="border p-2 w-full" placeholder="Address" />
-      <input name="phone" value={info.phone} onChange={handleChange} className="border p-2 w-full" placeholder="Phone" />
-      <input name="email" value={info.email} onChange={handleChange} className="border p-2 w-full" placeholder="Email" />
-      <input name="website" value={info.website} onChange={handleChange} className="border p-2 w-full" placeholder="Website" />
-      <input name="officeHours" value={info.officeHours} onChange={handleChange} className="border p-2 w-full" placeholder="Office Hours" />
+    <form onSubmit={handleSubmit} className="space-y-4 mx-auto max-w-3xl p-4 bg-white shadow rounded">
+      <div>
+        <label className="block text-sm font-semibold mb-1">Address</label>
+        <input name="address" value={info.address} onChange={handleChange} className="border p-2 w-full rounded" placeholder="Enter address" />
+      </div>
 
-      <h4 className="font-semibold">Social Links</h4>
-      <input name="facebook" value={info.socialLinks.facebook} onChange={handleSocialChange} className="border p-2 w-full" placeholder="Facebook" />
-      <input name="instagram" value={info.socialLinks.instagram} onChange={handleSocialChange} className="border p-2 w-full" placeholder="Instagram" />
-      <input name="twitter" value={info.socialLinks.twitter} onChange={handleSocialChange} className="border p-2 w-full" placeholder="Twitter" />
-      <input name="youtube" value={info.socialLinks.youtube} onChange={handleSocialChange} className="border p-2 w-full" placeholder="YouTube" />
+      <div>
+        <label className="block text-sm font-semibold mb-1">Phone</label>
+        <input name="phone" value={info.phone} onChange={handleChange} className="border p-2 w-full rounded" placeholder="Enter phone number" />
+      </div>
 
-      <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded">
-        {isNew ? "Add Contact Info" : "Update Contact Info"}
-      </button>
+      <div>
+        <label className="block text-sm font-semibold mb-1">Email</label>
+        <input name="email" value={info.email} onChange={handleChange} className="border p-2 w-full rounded" placeholder="Enter email" />
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold mb-1">Website</label>
+        <input name="website" value={info.website} onChange={handleChange} className="border p-2 w-full rounded" placeholder="Enter website URL" />
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold mb-1">Office Hours</label>
+        <input name="officeHours" value={info.officeHours} onChange={handleChange} className="border p-2 w-full rounded" placeholder="e.g. Mon–Fri, 9am–5pm" />
+      </div>
+
+      <div className="mt-6">
+        <h4 className="text-lg font-semibold mb-2">Social Links</h4>
+
+        <div className="space-y-2">
+          <div>
+            <label className="block text-sm font-semibold mb-1">Facebook</label>
+            <input name="facebook" value={info.socialLinks.facebook} onChange={handleSocialChange} className="border p-2 w-full rounded" placeholder="Facebook URL" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold mb-1">Instagram</label>
+            <input name="instagram" value={info.socialLinks.instagram} onChange={handleSocialChange} className="border p-2 w-full rounded" placeholder="Instagram URL" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold mb-1">Twitter</label>
+            <input name="twitter" value={info.socialLinks.twitter} onChange={handleSocialChange} className="border p-2 w-full rounded" placeholder="Twitter URL" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold mb-1">YouTube</label>
+            <input name="youtube" value={info.socialLinks.youtube} onChange={handleSocialChange} className="border p-2 w-full rounded" placeholder="YouTube URL" />
+          </div>
+<div>
+  <label className="block text-sm font-semibold mb-1">LinkedIn</label>
+  <input
+    name="linkedin"
+    value={info.socialLinks.linkedin}
+    onChange={handleSocialChange}
+    className="border p-2 w-full rounded"
+    placeholder="LinkedIn URL"
+  />
+</div>
+
+
+        </div>
+
+      </div>
+
+      <div className="pt-4">
+        <button type="submit" className="bg-purple-700 hover:bg-purple-800 text-white py-2 px-6 rounded shadow">
+          {isNew ? "Add Contact Info" : "Update Contact Info"}
+        </button>
+      </div>
     </form>
   );
 };

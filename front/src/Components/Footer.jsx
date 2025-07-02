@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGlobe,FaLinkedin } from "react-icons/fa";
 import axios from "../api/Axios";
 import logo from "../assets/logof.png";
+
+
 
 const Footer = () => {
   const [contact, setContact] = useState(null);
@@ -21,12 +23,34 @@ const Footer = () => {
         <div>
           <img src={logo} alt="SUKA Logo" className="h-40 md:w-40 mb-4" />
           <p className="mb-4 font-semibold">Follow Us</p>
-          <div className="flex space-x-4 mb-4">
-            <a href={contact?.facebook || "#"} className="hover:text-purple-900"><FaFacebookF /></a>
-            <a href={contact?.instagram || "#"} className="hover:text-purple-900"><FaInstagram /></a>
-            <a href={contact?.youtube || "#"} className="hover:text-purple-900"><FaYoutube /></a>
-            <a href={contact?.twitter || "#"} className="hover:text-purple-900"><FaTwitter /></a>
-          </div>
+         <div className="flex space-x-4 mb-4">
+  {contact?.socialLinks?.facebook && (
+    <a href={contact.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-purple-900">
+      <FaFacebookF />
+    </a>
+  )}
+  {contact?.socialLinks?.instagram && (
+    <a href={contact.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-purple-900">
+      <FaInstagram />
+    </a>
+  )}
+  {contact?.socialLinks?.youtube && (
+    <a href={contact.socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-purple-900">
+      <FaYoutube />
+    </a>
+  )}
+  {contact?.socialLinks?.twitter && (
+    <a href={contact.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-purple-900">
+      <FaTwitter />
+    </a>
+  )}
+  {contact?.socialLinks?.linkedin && (
+    <a href={contact.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-purple-900">
+      <FaLinkedin />
+    </a>
+  )}
+</div>
+
           <a href="#" className="text-sm hover:underline">Privacy Policy</a>
         </div>
 

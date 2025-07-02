@@ -29,7 +29,20 @@ exports.login = async (req, res) => {
 
 // ✅ SIGNUP CONTROLLER (PUBLIC)
 exports.signup = async (req, res) => {
-  const { name, email, password, phone, role } = req.body;
+  const {
+    name,
+    email,
+    password,
+    phone,
+    role,
+    bloodGroup,
+    address,
+    reasonForJoining,
+    areaOfInterest,
+    gender,
+    age,
+    dateOfBirth,
+  } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
@@ -45,6 +58,13 @@ exports.signup = async (req, res) => {
       phone,
       password: hashedPassword,
       role: role || 'Volunteer',
+      bloodGroup,
+      address,
+      reasonForJoining,
+      areaOfInterest,
+      gender,
+      age,
+      dateOfBirth,
     });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -53,10 +73,23 @@ exports.signup = async (req, res) => {
 
     res.status(201).json({
       token,
-      user: { id: user._id, name: user.name, role: user.role },
+      user: {
+        id: user._id,
+        name: user.name,
+        role: user.role,
+        email: user.email,
+        bloodGroup: user.bloodGroup,
+        gender: user.gender,
+        age: user.age,
+        address: user.address,
+        areaOfInterest: user.areaOfInterest,
+        reasonForJoining: user.reasonForJoining,
+        dateOfBirth: user.dateOfBirth,
+        phone: user.phone,
+      },
     });
   } catch (err) {
-    console.error('Signup Error:', err); // ✅ log actual error
+    console.error('Signup Error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };

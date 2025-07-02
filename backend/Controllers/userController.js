@@ -22,9 +22,23 @@ exports.getUsers = async (req, res) => {
 };
 
 
+
 // @desc Create new user
 exports.createUser = async (req, res) => {
-  const { name, email, phone, password, role } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    password,
+    role,
+    bloodGroup,
+    address,
+    reasonForJoining,
+    areaOfInterest,
+    gender,
+    age,
+    dateOfBirth,
+  } = req.body;
 
   // Check if email already exists
   const existing = await User.findOne({ email });
@@ -33,20 +47,58 @@ exports.createUser = async (req, res) => {
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create new user
-  const user = new User({ name, email, phone, password: hashedPassword, role });
+  // Create new user with additional fields
+  const user = new User({
+    name,
+    email,
+    phone,
+    password: hashedPassword,
+    role,
+    bloodGroup,
+    address,
+    reasonForJoining,
+    areaOfInterest,
+    gender,
+    age,
+    dateOfBirth,
+  });
 
   await user.save();
   res.status(201).json({ message: 'User created' });
 };
 
 // @desc Update user
+// @desc Update user
 exports.updateUser = async (req, res) => {
-  const { name, email, phone, role } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    role,
+    bloodGroup,
+    address,
+    reasonForJoining,
+    areaOfInterest,
+    gender,
+    age,
+    dateOfBirth,
+  } = req.body;
 
   const user = await User.findByIdAndUpdate(
     req.params.id,
-    { name, email, phone, role },
+    {
+      name,
+      email,
+      phone,
+      role,
+      bloodGroup,
+      address,
+      reasonForJoining,
+      areaOfInterest,
+      gender,
+      age,
+      dateOfBirth,
+    },
     { new: true }
   );
 

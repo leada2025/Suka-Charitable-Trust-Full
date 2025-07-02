@@ -11,6 +11,7 @@ const ContactInfoSchema = new mongoose.Schema({
     instagram: String,
     twitter: String,
     youtube: String,
+    linkedin: String,
   },
 });
 

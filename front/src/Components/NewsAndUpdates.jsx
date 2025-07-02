@@ -69,7 +69,11 @@ const NewsCarousel = () => {
                 {/* Image */}
                 <div className="md:w-1/2 w-full">
                   <img
-                    src={`https://suka-charitable-trust-full-backend.onrender.com/uploads/${news.image}`}
+                
+  src={`https://suka-charitable-trust-full-backend.onrender.com/uploads/news/${news.image}`}
+
+
+
 
                     alt={news.title}
                     className="w-full h-[250px] md:h-[500px] object-contain"

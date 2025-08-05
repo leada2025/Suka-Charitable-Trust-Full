@@ -1,22 +1,41 @@
-import React from 'react';
-
+import React from "react";
 
 const AboutUs = () => {
   window.scroll(0, 0);
 
-   
+  const advisoryBoard = [
+    {
+      name: "Mr. S. Saravana Venkatesh",
+      title: "Finance & Audit Advisor",
+      image: "/Mr. S. Saravana Venkatesh.JPG",
+      // description: "Renowned surgeon with 20+ years in kidney transplants.",
+    },
+    {
+      name: "Mr. Shanmugaraj",
+      title: "Partnerships & Ground-Level Outreach",
+      image: "Mr. Shanmugaraj.JPG",
+      // description: "Expert in transplant law & ethical compliance.",
+    },
+    {
+      name: "Rtn. Rajan Arumugam",
+      title: "Transplant Survivor Affairs",
+      image: "Rajan Arumugam.JPG",
+      // description: "Focused on improving healthcare access and quality.",
+    },
+  ];
+
   return (
-    
     <section className="bg-white text-black px-6 md:px-20 py-16 mx-auto relative">
-      {/* Heading */} <br /> <br />
-       <div className="absolute top-0 left-0 w-74 h-100 bg-gradient-to-br from-blue-600 to-transparent rounded-br-full opacity-50 pointer-events-none z-0" />
+      {/* Background gradients */}
+      <div className="absolute top-0 left-0 w-74 h-100 bg-gradient-to-br from-blue-600 to-transparent rounded-br-full opacity-50 pointer-events-none z-0" />
       <div className="absolute top-0 left-1/2 w-40 h-20 bg-gradient-to-br from-green-600 to-transparent rounded-b-full opacity-50 pointer-events-none z-0" />
       <div className="absolute bottom-0 left-4  w-74 h-20 bg-gradient-to-br from-green-600 to-transparent rounded-t-full opacity-50 pointer-events-none z-0" />
-      {/* Bottom-right purple gradient */}
       <div className="absolute bottom-0 right-0 w-20 h-100 bg-gradient-to-tl from-blue-600 to-transparent rounded-tl-full opacity-50 pointer-events-none z-0" />
-       <div className="absolute top-1/2 left-1/2 w-20 h-20 bg-gradient-to-bl from-green-600 to-transparent rounded-full opacity-50 pointer-events-none z-0 transform -translate-x-1/2 -translate-y-1/2" />
+      {/* <div className="absolute top-1/2 left-1/2 w-20 h-20 bg-gradient-to-bl from-green-600 to-transparent rounded-full opacity-50 pointer-events-none z-0 transform -translate-x-1/2 -translate-y-1/2" /> */}
+
+      {/* Heading */}
       <div className="mb-12 text-center">
-        <h2 className="text-4xl font-bold text-purple-900 mb-4">About Us</h2>
+        <h2 className="text-4xl font-bold text-purple-900 mb-4 mt-10">About Us</h2>
         <p className="text-lg text-purple-900">SUKA Charitable Trust</p>
       </div>
 
@@ -37,12 +56,33 @@ const AboutUs = () => {
         <div className="space-y-4">
           <div>
             <h4 className="font-bold text-lg">Founders:</h4>
-            <p><strong>S. Santhosh Kumar (Founder):</strong> A passionate advocate for ethical healthcare, bringing years of experience in patient advocacy to ensure transparency and legality in transplants.</p>
-            <p><strong>S. Radha Janani (Co-Founder):</strong> A strong proponent of patient rights and education, leading initiatives to raise awareness and provide support to kidney patients and families.</p>
+            <p><strong>S. Santhosh Kumar (Founder):</strong> A passionate advocate for ethical healthcare.</p>
+            <p><strong>S. Radha Janani (Co-Founder):</strong> Leading initiatives to raise awareness and support patients.</p>
           </div>
-          <div>
-            <h4 className="font-bold text-lg mt-4">Advisory Board:</h4>
-            <p>Includes experienced healthcare professionals, legal experts, and patient advocates who guide our initiatives and ensure adherence to ethical practices.</p>
+
+          {/* Advisory Board Static Render */}
+          <div className="mt-8">
+            <h4 className="font-bold text-lg">Advisory Board:</h4>
+            <p className="mb-4">Our advisory board consists of experts guiding our mission:</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {advisoryBoard.map((member, index) => (
+                <div
+                  key={index}
+                  className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
+                >
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 mx-auto rounded-full object-cover mb-4 "
+                  />
+                  <h5 className="text-xl font-semibold text-purple-800">
+                    {member.name}
+                  </h5>
+                  <p className="text-sm text-gray-700 italic">{member.title}</p>
+                  <p className="text-gray-800 mt-2 text-sm">{member.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -50,26 +90,24 @@ const AboutUs = () => {
       {/* Partners & Collaborators */}
       <div className="mb-16">
         <h3 className="text-2xl font-semibold text-purple-900 mb-4">Partners & Collaborators</h3>
-        <p className="text-black mb-4">SUKA Charitable Trust believes in the power of collaboration to achieve meaningful impact. We work closely with:</p>
+        <p className="text-black mb-4">We work closely with:</p>
         <ul className="list-disc list-inside space-y-2 text-black">
-          <li><strong>Hospitals and Healthcare Providers:</strong> Streamlining transplant processes and ensuring quality patient care.</li>
-          <li><strong>Government Authorities:</strong> Ensuring compliance with legal regulations through active collaboration.</li>
-          <li><strong>Non-Governmental Organizations (NGOs):</strong> Focused on healthcare, organ donation and patient support.</li>
-          <li><strong>Medical Professionals:</strong> Nephrologists, transplant surgeons and healthcare workers for expert patient guidance.</li>
-          <li><strong>Community Organizations:</strong> Conducting awareness campaigns and health camps at the grassroots level.</li>
+          <li><strong>Hospitals</strong> – ensuring quality transplant care.</li>
+          <li><strong>Government Authorities</strong> – for legal compliance.</li>
+          <li><strong>NGOs</strong> – focused on organ donation and support.</li>
+          <li><strong>Medical Professionals</strong> – nephrologists and surgeons.</li>
+          <li><strong>Community Organizations</strong> – for grassroots outreach.</li>
         </ul>
       </div>
 
-      {/* Annual Reports & Financials */}
+      {/* Annual Reports */}
       <div className="mb-8">
         <h3 className="text-2xl font-semibold text-purple-900 mb-4">Annual Reports & Financials</h3>
-        <p className="text-black mb-2">
-          Transparency is at the heart of SUKA Charitable Trust. We maintain the highest standards of accountability across our operations:
-        </p>
+        <p className="text-black mb-2">We maintain transparency:</p>
         <ul className="list-disc list-inside space-y-2 text-black">
-          <li><strong>Annual Reports:</strong> Highlighting achievements, challenges and future goals.</li>
-          <li><strong>Financial Statements:</strong> Detailed views of income, expenses and donor fund usage.</li>
-          <li><strong>Impact Metrics:</strong> Showcasing lives impacted, patients supported and awareness generated.</li>
+          <li><strong>Annual Reports</strong> – achievements and goals.</li>
+          <li><strong>Financials</strong> – income, expenses, donor usage.</li>
+          <li><strong>Impact Metrics</strong> – lives helped and awareness raised.</li>
         </ul>
       </div>
     </section>

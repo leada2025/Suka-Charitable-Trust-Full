@@ -51,7 +51,7 @@ const Footer = () => {
   )}
 </div>
 
-          <a href="#" className="text-sm hover:underline">Privacy Policy</a>
+          <a href="/privacy-policy" className="text-sm hover:underline">Privacy Policy</a>
         </div>
 
         {/* Middle Column */}

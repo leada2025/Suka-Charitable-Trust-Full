@@ -18,10 +18,7 @@ const handleSubscribe = async () => {
   }
 
   const token = localStorage.getItem("token");
-  if (!token) {
-    setStatus("Please log in to subscribe.");
-    return;
-  }
+
 
   try {
     const res = await axios.post(

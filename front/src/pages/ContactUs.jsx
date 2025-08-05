@@ -22,27 +22,24 @@ const ContactUsPage = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
+  try {
     const token = localStorage.getItem("token");
-    if (!token) {
-      setSuccessMsg("You must be logged in to submit an inquiry.");
-      return;
-    }
+    
+    const config = token
+      ? { headers: { Authorization: `Bearer ${token}` } }
+      : {};
 
-    try {
-      await axios.post("/api/inquiries", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setSuccessMsg("Your message has been submitted successfully!");
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    } catch (err) {
-      setSuccessMsg("Something went wrong. Please try again.");
-    }
-  };
+    await axios.post("/api/inquiries", formData, config);
+    setSuccessMsg("Your message has been submitted successfully!");
+    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+  } catch (err) {
+    setSuccessMsg("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <>
@@ -103,9 +100,9 @@ const ContactUsPage = () => {
           <h2 className="text-2xl font-semibold text-purple-900 mb-4">📍 Location Map</h2>
           <div className="w-full h-64">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.0647865042624!2d76.95087554051479!3d11.033766176481237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858f33da03f53%3A0x4b2db3750d544dff!2sKannappa%20Nagar%2C%20Sanganoor%2C%20Coimbatore%2C%20Tamil%20Nadu%20641027!5e0!3m2!1sen!2sin!4v1747379325504!5m2!1sen!2sin"
-              width="100%"
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.098496730296!2d76.96499170986333!3d11.031236489088082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8586c00000039%3A0x1ab03c2cb32ea857!2sNvron%20Life%20Science%20Ltd!5e0!3m2!1sen!2sin!4v1754378553845!5m2!1sen!2sin"
               height="100%"
+              width="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"

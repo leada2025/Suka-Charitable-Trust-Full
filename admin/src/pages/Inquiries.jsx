@@ -6,6 +6,9 @@ const InquiryAdmin = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 10;
+
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -45,6 +48,12 @@ const InquiryAdmin = () => {
   if (loading) return <p className="p-6">Loading inquiries...</p>;
   if (error) return <p className="p-6 text-red-600">{error}</p>;
 
+  const totalPages = Math.ceil(inquiries.length / itemsPerPage);
+const indexOfLastItem = currentPage * itemsPerPage;
+const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+const currentInquiries = inquiries.slice(indexOfFirstItem, indexOfLastItem);
+
+
   return (
     <div className="p-2">
       <h2 className="text-2xl font-bold mb-4">📥 Inquiry Submissions</h2>
@@ -65,7 +74,7 @@ const InquiryAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {inquiries.map((inq) => {
+             {currentInquiries.map((inq) => {
                 const messageTooLong = inq.message.length > 100;
                 const displayedMessage =
                   expandedCard === inq._id
@@ -136,6 +145,40 @@ const InquiryAdmin = () => {
               })}
             </tbody>
           </table>
+          {totalPages > 1 && (
+  <div className="flex justify-center gap-2 mt-4">
+    <button
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      disabled={currentPage === 1}
+      className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+    >
+      Prev
+    </button>
+
+    {[...Array(totalPages)].map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={`px-3 py-1 rounded ${
+          currentPage === i + 1
+            ? 'bg-purple-700 text-white'
+            : 'bg-gray-100 hover:bg-gray-200'
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
+
+    <button
+      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+      disabled={currentPage === totalPages}
+      className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+    >
+      Next
+    </button>
+  </div>
+)}
+
         </div>
       )}
     </div>

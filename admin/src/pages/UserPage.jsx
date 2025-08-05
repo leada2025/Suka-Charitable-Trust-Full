@@ -120,6 +120,14 @@ export default function UsersPage() {
     setEditingId(user._id || user.id);
     setIsModalOpen(true);
   };
+const [currentPage, setCurrentPage] = useState(1);
+const usersPerPage = 30;
+
+const indexOfLastUser = currentPage * usersPerPage;
+const indexOfFirstUser = indexOfLastUser - usersPerPage;
+const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
+const totalPages = Math.ceil(users.length / usersPerPage);
 
   return (
     <div className="p-6">
@@ -163,10 +171,10 @@ export default function UsersPage() {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 ? (
+             {currentUsers.length === 0 ? (
               <tr><td colSpan="5" className="text-center p-4">No users found.</td></tr>
             ) : (
-              users.map((user) => (
+              currentUsers.map((user) => (
                 <tr key={user._id || user.id} className="border-t">
                   <td className="p-3">{user.name}</td>
                   <td className="p-3">{user.email}</td>
@@ -188,7 +196,38 @@ export default function UsersPage() {
             )}
           </tbody>
         </table>
+        
       )}
+      {users.length > usersPerPage && (
+  <div className="flex justify-center items-center mt-4 space-x-2">
+    <button
+      onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+      className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
+      disabled={currentPage === 1}
+    >
+      Previous
+    </button>
+
+    {[...Array(totalPages)].map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={`px-3 py-1 rounded ${currentPage === i + 1 ? 'bg-purple-900 text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+      >
+        {i + 1}
+      </button>
+    ))}
+
+    <button
+      onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+      className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded"
+      disabled={currentPage === totalPages}
+    >
+      Next
+    </button>
+  </div>
+)}
+
 
      {isModalOpen && (
   <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 overflow-auto">

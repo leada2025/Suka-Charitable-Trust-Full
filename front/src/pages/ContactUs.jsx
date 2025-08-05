@@ -100,7 +100,7 @@ const handleSubmit = async (e) => {
           <h2 className="text-2xl font-semibold text-purple-900 mb-4">📍 Location Map</h2>
           <div className="w-full h-64">
             <iframe
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.098496730296!2d76.96499170986333!3d11.031236489088082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8586c00000039%3A0x1ab03c2cb32ea857!2sNvron%20Life%20Science%20Ltd!5e0!3m2!1sen!2sin!4v1754378553845!5m2!1sen!2sin"
+               src="https://maps.google.com/maps?q=11.031167,76.967351&z=17&output=embed"
               height="100%"
               width="100%"
               style={{ border: 0 }}

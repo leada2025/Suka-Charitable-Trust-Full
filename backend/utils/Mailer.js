@@ -21,7 +21,7 @@ const sendThankYouEmail = async (toEmail) => {
     html: `
     <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif;border:1px solid #e0e0e0;border-radius:8px;padding:20px;background-color:#f9f9f9;">
       <div style="text-align:center;margin-bottom:20px;">
-        <img src="https://sukacare.org/logo.webp" alt="SUKA Logo" style="max-width:150px;margin-bottom:10px;" />
+        <img src="https://suka-charitable-trust-full-frontend.onrender.com/logo.webp" alt="SUKA Logo" style="max-width:150px;margin-bottom:10px;" />
         <h2 style="color:#4b0082;">Welcome to SUKA Charitable Trust</h2>
       </div>
 

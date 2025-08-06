@@ -84,40 +84,42 @@ const AboutUs = () => {
           <div className="mt-8">
             <h4 className="font-bold text-lg">Advisory Board:</h4>
             <p className="mb-4">Our advisory board consists of experts guiding our mission:</p>
-          <div className="grid grid-cols-3 gap-6 justify-items-center">
-  {/* Top row: 3 members */}
+         {/* Grid for first 3 members */}
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center ">
   {advisoryBoard.slice(0, 3).map((member, index) => (
     <div
       key={index}
-      className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
-       data-aos="zoom-in"
-                data-aos-delay={index * 150}
+      className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 min-w-[300px]"
+      data-aos="zoom-in"
+      data-aos-delay={index * 150}
     >
       <img
         src={member.image}
         alt={member.name}
-        className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
+        className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover object-top mb-4"
       />
       <h5 className="text-xl font-semibold text-purple-800">{member.name}</h5>
       <p className="text-sm text-gray-700 italic">{member.title}</p>
       <p className="text-gray-800 mt-2 text-sm">{member.description}</p>
     </div>
   ))}
+</div>
 
-  {/* Bottom row: 1 member centered (col-span-3) */}
-  <div className="col-span-3 flex justify-center">
-    <div className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 "   data-aos="zoom-in-up"
-                data-aos-delay="500">
-      <img
-        src={advisoryBoard[3].image}
-        alt={advisoryBoard[3].name}
-        className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
-         
-      />
-      <h5 className="text-xl font-semibold text-purple-800">{advisoryBoard[3].name}</h5>
-      <p className="text-sm text-gray-700 italic">{advisoryBoard[3].title}</p>
-      <p className="text-gray-800 mt-2 text-sm">{advisoryBoard[3].description}</p>
-    </div>
+{/* Separate row for 4th member, centered */}
+<div className="flex justify-center mt-6">
+  <div
+    className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 min-w-[300px]"
+    data-aos="zoom-in-up"
+    data-aos-delay="500"
+  >
+    <img
+      src={advisoryBoard[3].image}
+      alt={advisoryBoard[3].name}
+      className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover object-top mb-4"
+    />
+    <h5 className="text-xl font-semibold text-purple-800">{advisoryBoard[3].name}</h5>
+    <p className="text-sm text-gray-700 italic">{advisoryBoard[3].title}</p>
+    <p className="text-gray-800 mt-2 text-sm">{advisoryBoard[3].description}</p>
   </div>
 </div>
 

@@ -22,6 +22,18 @@ const AboutUs = () => {
       image: "Rajan Arumugam.JPG",
       // description: "Focused on improving healthcare access and quality.",
     },
+        {
+      name: "Mr. Veera Manikandan",
+      title: "Legal & Compliance Advisor",
+      image: "Mr. Veera Manikandan.JPG",
+      // description: "Focused on improving healthcare access and quality.",
+    },
+         {
+      name: "Mr. Santhosh Kumar",
+      title: "Founder",
+      image: "Santhosh Kumar.jpg",
+      // description: "Focused on improving healthcare access and quality.",
+    },
   ];
 
   return (
@@ -70,11 +82,12 @@ const AboutUs = () => {
                   key={index}
                   className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
                 >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 mx-auto rounded-full object-cover mb-4 "
-                  />
+                 <img
+  src={member.image}
+  alt={member.name}
+  className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
+/>
+
                   <h5 className="text-xl font-semibold text-purple-800">
                     {member.name}
                   </h5>

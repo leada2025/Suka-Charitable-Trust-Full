@@ -70,7 +70,7 @@ const AboutUs = () => {
   <img
     src="Santhosh Kumar.jpg"
     alt="S. Santhosh Kumar"
-    className="w-40 h-40 rounded-full object-cover object-top mx-auto sm:mx-0"
+    className="w-60 h-60  object-cover object-top mx-auto sm:mx-0"
   
    data-aos="fade-right"
             data-aos-delay="200"

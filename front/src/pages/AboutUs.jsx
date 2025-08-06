@@ -28,12 +28,7 @@ const AboutUs = () => {
       image: "Mr. Veera Manikandan.JPG",
       // description: "Focused on improving healthcare access and quality.",
     },
-         {
-      name: "Mr. Santhosh Kumar",
-      title: "Founder",
-      image: "Santhosh Kumar.jpg",
-      // description: "Focused on improving healthcare access and quality.",
-    },
+    
   ];
 
   return (
@@ -68,7 +63,20 @@ const AboutUs = () => {
         <div className="space-y-4">
           <div>
             <h4 className="font-bold text-lg">Founders:</h4>
-            <p><strong>S. Santhosh Kumar (Founder):</strong> A passionate advocate for ethical healthcare.</p>
+            <div className="text-center sm:text-left mb-6">
+  <p className="mb-2">
+    <strong>S. Santhosh Kumar (Founder):</strong> A passionate advocate for ethical healthcare.
+  </p>
+  <img
+    src="Santhosh Kumar.jpg"
+    alt="S. Santhosh Kumar"
+    className="w-40 h-40 rounded-full object-cover object-top mx-auto sm:mx-0"
+  
+   data-aos="fade-right"
+            data-aos-delay="200"
+  />
+</div>
+
             <p><strong>S. Radha Janani (Co-Founder):</strong> Leading initiatives to raise awareness and support patients.</p>
           </div>
 
@@ -76,26 +84,43 @@ const AboutUs = () => {
           <div className="mt-8">
             <h4 className="font-bold text-lg">Advisory Board:</h4>
             <p className="mb-4">Our advisory board consists of experts guiding our mission:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {advisoryBoard.map((member, index) => (
-                <div
-                  key={index}
-                  className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
-                >
-                 <img
-  src={member.image}
-  alt={member.name}
-  className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
-/>
+          <div className="grid grid-cols-3 gap-6 justify-items-center">
+  {/* Top row: 3 members */}
+  {advisoryBoard.slice(0, 3).map((member, index) => (
+    <div
+      key={index}
+      className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
+       data-aos="zoom-in"
+                data-aos-delay={index * 150}
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
+      />
+      <h5 className="text-xl font-semibold text-purple-800">{member.name}</h5>
+      <p className="text-sm text-gray-700 italic">{member.title}</p>
+      <p className="text-gray-800 mt-2 text-sm">{member.description}</p>
+    </div>
+  ))}
 
-                  <h5 className="text-xl font-semibold text-purple-800">
-                    {member.name}
-                  </h5>
-                  <p className="text-sm text-gray-700 italic">{member.title}</p>
-                  <p className="text-gray-800 mt-2 text-sm">{member.description}</p>
-                </div>
-              ))}
-            </div>
+  {/* Bottom row: 1 member centered (col-span-3) */}
+  <div className="col-span-3 flex justify-center">
+    <div className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 "   data-aos="zoom-in-up"
+                data-aos-delay="500">
+      <img
+        src={advisoryBoard[3].image}
+        alt={advisoryBoard[3].name}
+        className="w-40 h-40 mx-auto rounded-full object-cover object-top mb-4"
+         
+      />
+      <h5 className="text-xl font-semibold text-purple-800">{advisoryBoard[3].name}</h5>
+      <p className="text-sm text-gray-700 italic">{advisoryBoard[3].title}</p>
+      <p className="text-gray-800 mt-2 text-sm">{advisoryBoard[3].description}</p>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
       </div>

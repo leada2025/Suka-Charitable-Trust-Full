@@ -84,10 +84,38 @@ const Footer = () => {
             <FaEnvelope />
             <a href={`mailto:${contact?.email}`} className="hover:text-purple-900">{contact?.email}</a>
           </div>
-          <div className="flex items-center gap-3 text-sm">
-            <FaGlobe />
-            <span>{contact?.website}</span>
-          </div>
+        <div className="flex items-center gap-3 text-sm">
+  <FaGlobe />
+  {contact?.website ? (() => {
+    try {
+      const formattedUrl = contact.website.startsWith("http://") || contact.website.startsWith("https://")
+        ? contact.website
+        : `https://${contact.website}`;
+
+      const url = new URL(formattedUrl);
+      const isExternal = url.hostname !== window.location.hostname;
+
+     
+
+      return (
+        <a
+          href={formattedUrl}
+          target={isExternal ? "_blank" : "_self"}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="hover:text-purple-900"
+        >
+          {contact.website}
+        </a>
+      );
+    } catch (e) {
+    
+      return <span className="text-red-600">Invalid URL</span>;
+    }
+  })() : (
+    <span className="text-gray-500">Not available</span>
+  )}
+</div>
+
         </div>
       </div>
 

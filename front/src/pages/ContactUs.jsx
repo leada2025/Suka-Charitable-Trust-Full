@@ -71,13 +71,39 @@ const handleSubmit = async (e) => {
                 {contactInfo.email}
               </a>
             </p>
-            <p>
-              <strong>Website:</strong>{" "}
-              <a href={contactInfo.website} target="_blank" rel="noopener noreferrer" className="text-purple-900 hover:underline">
-                {contactInfo.website}
-              </a>
-            </p>
-            <p><strong>Office Hours:</strong> {contactInfo.officeHours}</p>
+      <p>
+  <strong>Website:</strong>{" "}
+  {contactInfo.website ? (
+    (() => {
+      try {
+        // Ensure the URL has a scheme (http/https)
+        const formattedUrl = contactInfo.website.startsWith("http://") || contactInfo.website.startsWith("https://")
+          ? contactInfo.website
+          : `https://${contactInfo.website}`;
+
+        const url = new URL(formattedUrl);
+        const isExternal = url.hostname !== window.location.hostname;
+
+        return (
+          <a
+            href={formattedUrl}
+            target={isExternal ? "_blank" : "_self"}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            className="text-purple-900 hover:underline"
+          >
+            {contactInfo.website}
+          </a>
+        );
+      } catch (e) {
+        return <span className="text-red-600">Invalid URL</span>;
+      }
+    })()
+  ) : (
+    <span className="text-gray-500">Not available</span>
+  )}
+</p>
+
+
           </div>
         )}
 

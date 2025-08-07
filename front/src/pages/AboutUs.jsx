@@ -66,7 +66,7 @@ const AboutUs = () => {
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
   {/* Founder 1 */}
   <div
-    className="bg-white shadow-md rounded-lg p-4 text-center item-center border border-gray-200"
+    className="bg-white shadow-md rounded-lg p-4 text-center item-center border border-gray-200 md:w-[500px]"
     data-aos="zoom-in-right"
     data-aos-delay="100"
   >
@@ -74,7 +74,7 @@ const AboutUs = () => {
     <img
       src="Santhosh Kumar.jpg"
       alt="S. Santhosh Kumar"
-      className="w-[400px] h-[460px] object-cover justify-content-center rounded-lg mb-4"
+      className="w-[300px] h-[360px] md:w-[300px] md:h-[360px] object-cover justify-content-center rounded-lg mb-4"
     />
     </div>
     <h5 className="text-xl font-semibold text-purple-800">S. Santhosh Kumar</h5>
@@ -85,22 +85,24 @@ const AboutUs = () => {
   </div>
 
   {/* Founder 2 */}
-  {/* <div
-    className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200"
+  <div
+    className="bg-white shadow-md rounded-lg p-4 text-center item-center border border-gray-200 md:w-[500px]"
     data-aos="zoom-in-left"
     data-aos-delay="200"
   >
+     <div className="flex justify-center">
     <img
-      src="Radha Janani.jpg"
-      alt="S. Radha Janani"
-      className="w-full h-full object-cover rounded-lg mb-4"
+      src="S. Radha Janani.JPG"
+      alt="S. Radha Janani.jpg"
+       className="w-[300px] h-[360px] md:w-[300px] md:h-[360px] object-cover justify-content-center rounded-lg mb-4"
     />
+    </div>
     <h5 className="text-xl font-semibold text-purple-800">S. Radha Janani</h5>
     <p className="text-sm text-gray-700 italic mb-2">Co-Founder</p>
     <p className="text-gray-800 text-sm">
       A driven leader committed to raising awareness and empowering families navigating organ transplantation. Janani leads patient outreach and community engagement with compassion and determination.
     </p>
-  </div> */}
+  </div>
 </div>
 
           </div>

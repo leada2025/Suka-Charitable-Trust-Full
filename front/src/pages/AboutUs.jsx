@@ -24,6 +24,11 @@ const AboutUs = () => {
       title: "Legal & Compliance Advisor",
       image: "Mr. Veera Manikandan.JPG",
     },
+      {
+      name: "Dr. Khaja Moinudeen ",
+      title: "Medical Advisor",
+      image: "Dr. Khaja Moinudeen.JPG",
+    },
   ];
 
   return (
@@ -60,32 +65,53 @@ const AboutUs = () => {
         </div>
 
         {/* Advisory Board */}
-        <div className="mt-8">
-          <h4 className="font-bold text-lg">Advisory Board:</h4>
-          <p className="mb-4">Our advisory board consists of experts guiding our mission:</p>
+        {/* Advisory Board */}
+<div className="mt-8">
+  <h4 className="font-bold text-lg">Advisory Board:</h4>
+  <p className="mb-4">Our advisory board consists of experts guiding our mission:</p>
 
-          {/* Grid for first 3 members */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-            {advisoryBoard.slice(0, 3).map((member, index) => (
-              <div
-                key={index}
-                className="text-center"
-                data-aos="zoom-in"
-                data-aos-delay={index * 150}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover object-top mb-4"
-                />
-                <h5 className="text-xl font-semibold text-purple-800">{member.name}</h5>
-                <p className="text-sm text-gray-700 italic">{member.title}</p>
-              </div>
-            ))}
-          </div>
+  {/* First row - 3 members */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center mb-6">
+    {advisoryBoard.slice(0, 3).map((member, index) => (
+      <div
+        key={index}
+        className="text-center"
+        data-aos="zoom-in"
+        data-aos-delay={index * 150}
+      >
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover object-top mb-4"
+        />
+        <h5 className="text-xl font-semibold text-purple-800">{member.name}</h5>
+        <p className="text-sm text-gray-700 italic">{member.title}</p>
+      </div>
+    ))}
+  </div>
+
+  {/* Second row - 2 members */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex  justify-items-center">
+    {advisoryBoard.slice(3, 5).map((member, index) => (
+      <div
+        key={index + 3} // Important: Use different keys than first row
+        className="text-center"
+        data-aos="zoom-in"
+        data-aos-delay={(index + 3) * 150}
+      >
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover object-top mb-4"
+        />
+        <h5 className="text-xl font-semibold text-purple-800">{member.name}</h5>
+        <p className="text-sm text-gray-700 italic">{member.title}</p>
+      </div>
+    ))}
+  </div>
 
           {/* Separate row for 4th member */}
-          <div className="flex justify-center mt-6">
+          {/* <div className="flex justify-center mt-6">
             <div
               className="text-center"
               data-aos="zoom-in-up"
@@ -99,7 +125,7 @@ const AboutUs = () => {
               <h5 className="text-xl font-semibold text-purple-800">{advisoryBoard[3].name}</h5>
               <p className="text-sm text-gray-700 italic">{advisoryBoard[3].title}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

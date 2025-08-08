@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import React from "react";
 import logo from "../assets/logo.webp";
 import { FaUserCircle } from "react-icons/fa";
-
+import UserProfileModal from "./UserProfileModal"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import LoginModal from '../Components/Login';
 import SignupModal from '../Components/Signup';
@@ -17,7 +17,7 @@ const Navbar = () => {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [notification, setNotification] = useState('');
-
+const [showProfile, setShowProfile] = useState(false);
 
 
   const navLinks = [
@@ -110,7 +110,7 @@ const handleLoginClose = () => {
   <div className="hidden md:flex items-center space-x-4">
   {user ? (
     <>
-      <FaUserCircle className="text-2xl text-purple-900" />
+      <FaUserCircle className="text-2xl text-purple-900 cursor-pointer"   onClick={() => setShowProfile(true)} />
       
       <button
         onClick={handleLogout}
@@ -161,7 +161,7 @@ const handleLoginClose = () => {
     {user ? (
       <>
         <div className="flex items-center space-x-2 py-2">
-          <FaUserCircle className="text-xl text-purple-900" />
+          <FaUserCircle onClick={() => setShowProfile(true)}  className="text-xl text-purple-900 cursor-pointer" />
           <span className="text-black">{user.name}</span>
         </div>
         <button
@@ -202,6 +202,18 @@ const handleLoginClose = () => {
     </nav>
   {showLogin && <LoginModal onClose={handleLoginClose} showNotification={showNotification} />}
       {showSignup && <SignupModal onClose={() => setShowSignup(false)} showNotification={showNotification} />}
+{showProfile && user && (
+  <UserProfileModal
+    userId={user._id || user.id} 
+    onClose={() => setShowProfile(false)}
+    showNotification={showNotification}
+  />
+)}
+
+
+
+
+
       </>
   );
 };

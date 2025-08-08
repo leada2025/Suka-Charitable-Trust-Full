@@ -3,6 +3,7 @@ const router = express.Router();
 const protect = require('../middleware/authMiddleware.js');
 const {
   getUsers,
+  getUserById,
   createUser,
   updateUser,
   deleteUser,
@@ -11,6 +12,7 @@ const {
 router.use(protect); // All below routes are protected
 
 router.get('/', getUsers);
+router.get('/:id', getUserById);
 router.post('/', createUser);
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);

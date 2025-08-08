@@ -63,47 +63,50 @@ const AboutUs = () => {
         <div className="space-y-4">
           <div>
             <h4 className="font-bold text-lg">Founders:</h4>
-           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center mb-8">
   {/* Founder 1 */}
   <div
-    className="bg-white shadow-md rounded-lg p-4 text-center item-center border border-gray-200 md:w-[500px]"
+    className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 w-full max-w-[450px]"
     data-aos="zoom-in-right"
     data-aos-delay="100"
   >
     <div className="flex justify-center">
-    <img
-      src="Santhosh Kumar.jpg"
-      alt="S. Santhosh Kumar"
-      className="w-[300px] h-[360px] md:w-[300px] md:h-[360px] object-cover justify-content-center rounded-lg mb-4"
-    />
+      <img
+        src="Santhosh Kumar.jpg"
+        alt="S. Santhosh Kumar"
+        className="w-[220px] h-[260px] object-cover rounded-lg mb-4"
+      />
     </div>
     <h5 className="text-xl font-semibold text-purple-800">S. Santhosh Kumar</h5>
     <p className="text-sm text-gray-700 italic mb-2">Founder</p>
     <p className="text-gray-800 text-sm">
-      A passionate advocate for ethical healthcare, Santhosh Kumar founded SUKA to bring transparency and support to kidney transplant patients across India. With a deep understanding of patient challenges, he strives to make a lasting impact.
+      A passionate advocate for ethical healthcare, Santhosh Kumar founded SUKA
+      to bring transparency and support to kidney transplant patients across India.
     </p>
   </div>
 
   {/* Founder 2 */}
   <div
-    className="bg-white shadow-md rounded-lg p-4 text-center item-center border border-gray-200 md:w-[500px]"
+    className="bg-white shadow-md rounded-lg p-4 text-center border border-gray-200 w-full max-w-[450px]"
     data-aos="zoom-in-left"
     data-aos-delay="200"
   >
-     <div className="flex justify-center">
-    <img
-      src="S. Radha Janani.JPG"
-      alt="S. Radha Janani.jpg"
-       className="w-[300px] h-[360px] md:w-[300px] md:h-[360px] object-cover justify-content-center rounded-lg mb-4"
-    />
+    <div className="flex justify-center">
+      <img
+        src="S. Radha Janani.JPG"
+        alt="S. Radha Janani"
+        className="w-[220px] h-[260px] object-cover rounded-lg mb-4"
+      />
     </div>
     <h5 className="text-xl font-semibold text-purple-800">S. Radha Janani</h5>
     <p className="text-sm text-gray-700 italic mb-2">Co-Founder</p>
     <p className="text-gray-800 text-sm">
-      A driven leader committed to raising awareness and empowering families navigating organ transplantation. Janani leads patient outreach and community engagement with compassion and determination.
+      A driven leader committed to raising awareness and empowering families navigating
+      organ transplantation.
     </p>
   </div>
 </div>
+
 
           </div>
 

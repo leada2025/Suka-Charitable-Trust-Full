@@ -17,6 +17,8 @@ import ContactUsPage from './pages/ContactUs';
 import Footer from './Components/Footer';
 import Careers from './pages/Careers';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsService';
+import RefundCancellationPolicy from './pages/RefundCancellation';
 
 function App() {
   useEffect(() => {
@@ -37,6 +39,8 @@ function App() {
         <Route path="/contact" element={<ContactUsPage />} />
          <Route path="/careers" element={<Careers />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+         <Route path="/refund" element={<RefundCancellationPolicy />} />
 
       </Routes>
       <Footer/>

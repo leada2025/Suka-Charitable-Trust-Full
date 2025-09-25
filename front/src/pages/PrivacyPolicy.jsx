@@ -57,6 +57,12 @@ const PrivacyPolicy = () => {
     window.scroll(0,0)
   return (
     <div className="max-w-4xl mx-auto px-4 py-10 ">
+
+             <div className="absolute bottom-0 right-0 w-25 h-60 bg-gradient-to-br from-green-600 to-transparent rounded-tl-full opacity-50 pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-25 h-20 bg-gradient-to-br from-blue-600 to-transparent rounded-t-full opacity-50 pointer-events-none z-0" />
+         <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-bl from-green-600 to-transparent rounded-full opacity-50 pointer-events-none z-0 transform -translate-x-1/2 -translate-y-1/2" />
+<div className="absolute top-0 left-0 w-50 h-150 bg-gradient-to-br from-green-600 to-transparent rounded-br-full opacity-50 pointer-events-none z-0" />
+<div className="absolute top-0 right-0 w-20 h-40 bg-gradient-to-br from-blue-600 to-transparent rounded-bl-full opacity-50 pointer-events-none z-0" />
       <h1 className="text-4xl font-bold text-purple-900 text-center mt-20 mb-4">
         Privacy Policy
       </h1>

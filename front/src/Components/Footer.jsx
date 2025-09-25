@@ -52,6 +52,8 @@ const Footer = () => {
 </div>
 
           <a href="/privacy-policy" className="text-sm hover:underline">Privacy Policy</a>
+            <a href="/terms" className="text-sm md:ml-5 ml-5 hover:underline">Terms of Service</a><br />
+            <a href="/refund" className="text-sm  hover:underline">Refund and Cancellation Policy</a>
         </div>
 
         {/* Middle Column */}
